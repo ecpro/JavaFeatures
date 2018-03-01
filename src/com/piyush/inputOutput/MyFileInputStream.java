@@ -1,4 +1,4 @@
-package com.inputOutput;
+package com.piyush.inputOutput;
 
 import java.io.File;
 import java.io.FileInputStream;
