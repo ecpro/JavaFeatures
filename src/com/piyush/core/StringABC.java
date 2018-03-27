@@ -1,5 +1,8 @@
 package com.piyush.core;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class StringABC {
 	public String x;
 	
@@ -26,5 +29,7 @@ public class StringABC {
 		System.out.println(abc.equals("xyz"));
 		
 		System.out.println("xyz".equals(abc));
+		Set<String> x = new HashSet<String>();
+		x.addAll(null);
 	}
 }
