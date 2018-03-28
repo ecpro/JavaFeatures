@@ -8,6 +8,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class Adder implements Runnable{
 	private String inFile, outFile;
@@ -36,7 +39,7 @@ public class Adder implements Runnable{
 		System.out.println("Data written to file : " + outFile);
 	}
 	
-	public static void main(String[] args) {
+	public static void main2(String[] args) {
 		//String from = "Resources"+File.separator+"x" + 0 + ".txt";
 		//String to = "Resources"+File.separator+"y" + 0 + ".txt";
 		Thread [] threads = new Thread[5];
@@ -57,6 +60,24 @@ public class Adder implements Runnable{
 		 System.out.print("batch processing completed");
 		 
 	}
+
+	public static void main(String args[]) {
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        for(int i = 0; i < 5; i++) {
+            Adder adder = new Adder("Resources"+File.separator+"x" + i + ".txt", "Resources"+File.separator+"y" + i + ".txt");
+            executorService.submit(adder);
+        }
+
+        executorService.shutdown();
+        try {
+            executorService.awaitTermination(60, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.print("batch processing completed");
+
+    }
 
 	@SuppressWarnings("unused")
 	private static void createFiles() {
