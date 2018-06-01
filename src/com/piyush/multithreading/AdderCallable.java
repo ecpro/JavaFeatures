@@ -1,4 +1,4 @@
-package com.piyush.thread;
+package com.piyush.multithreading;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

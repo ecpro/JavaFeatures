@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
-import com.piyush.thread.BankAccount;
+import com.piyush.multithreading.BankAccount;
 
 class ReflectionExample {
 
